@@ -1,0 +1,6 @@
+node_modules
+dist
+.cache
+twitch-api-stuff.txt
+twitchproj.sublime-project
+twitchproj.sublime-workspace
