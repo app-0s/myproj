@@ -1,18 +1,19 @@
 import React from "react";
 import TwitchInfo from './TwitchStuff/TwitchUserInfo'
+import './TwitchApp.css';
 
 export default class UTA extends React.Component {
 	constructor(props){
 		super(props);
 
 		this.state={
-			profile: ''
+			profile: []
 		};
 	}
 
-	newProfile = (userProfile) => {
-		this.setState(prevState => ({
-			profile: userProfile,
+	newProfile = async(userProfile) => {
+		await this.setState( prevState => ({
+			profile: <TwitchInfo login={userProfile}/>,
 		}));
 	}
 
@@ -29,37 +30,34 @@ export default class UTA extends React.Component {
 
 
 class EntryForm extends React.Component{
-		state = {
-			loginName: '',
-		};
-
+		constructor(props){
+		super(props)
+			this.state = {
+				loginName: '',
+			};
+		}
 
 	// handleSubmit (async) event method within class 
 	handleSubmit = async(event) => {
 		event.preventDefault();
-		// TwitchInfo.setState( () => {
-		// 	login = loginName;
-		// });
-		//const resp = await TwitchInfo(login="appebello");	// Contains an await
-		console.log(`Submitting ${this.state.loginName}`);
-		this.props.onSubmit(
-				<TwitchInfo login={this.state.loginName}/>
+		console.log(`Entryform.LoginName: ${this.state.loginName}`);
+		 this.props.onSubmit(
+			this.state.loginName
 		);
-		
 
 		this.setState({ loginName: '' });
 	};
 
 	render() {
 		return(
-			<form onSubmit={this.handleSubmit}>
+			<form onSubmit={this.handleSubmit} className="SubmitForm">
 				<input type="text"
 						placeholder="Twitch User Name"
 						value={this.state.loginName}
 						onChange={event => this.setState({ loginName:event.target.value})}
 						required
 				/>
-				<button>Add User</button>
+				<button className="AddButton">Add User</button>
 			</form>
 		);	
 	};

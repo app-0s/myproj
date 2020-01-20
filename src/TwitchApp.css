@@ -1,0 +1,11 @@
+.SubmitForm {
+	margin: 15px;
+}
+
+.TCard {
+	display: inline-block;
+  	border-style: solid;
+  	padding: 15px;
+  	margin-left: 15px;
+  	text-align: center;
+}

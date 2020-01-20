@@ -4,3 +4,4 @@ dist
 twitch-api-stuff.txt
 twitchproj.sublime-project
 twitchproj.sublime-workspace
+src/data/client-data/clientD.json
